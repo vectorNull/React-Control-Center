@@ -4,12 +4,15 @@ import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components'
-import { Ecommerce, Calendar, Employees, Stacked, Pyramid, Customers, Kanban, Area, Bar, Pie, Financial, ColorMapping, ColorPicker, Editor} from './pages'
+import { Ecommerce, Calendar, Employees, Stacked, Pyramid, Customers, Kanban, Area, Bar, Pie, Financial, ColorMapping, ColorPicker, Editor, Orders, Line } from './pages'
+
+import { useStateContext } from './contexts/ContextProvider';
 
 import './App.css';
 
 const App = () => {
-    const activeMenu = false;
+    const { activeMenu } = useStateContext();
+    
     return (
         <div>
             <BrowserRouter>
@@ -22,11 +25,11 @@ const App = () => {
                         </TooltipComponent>
                     </div>
                     {activeMenu ? (
-                        <div className='w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white'>
+                        <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white">
                             <Sidebar />
                         </div>
                     ) : (
-                        <div className='w-0 dark: bg-secondary-dark-bg'>
+                        <div className="w-0 dark: bg-secondary-dark-bg">
                             <Sidebar />
                         </div>
                     )}
@@ -41,8 +44,8 @@ const App = () => {
                     <div>
                         <Routes>
                             {/* Dashboard */}
-                            <Route path='/' element={<ECommerce />} />
-                            <Route path='/ecommerce' element={<ECommerce />} />
+                            <Route path='/' element={<Ecommerce />} />
+                            <Route path='/ecommerce' element={<Ecommerce />} />
 
                             {/* Pages */}
                             <Route path='/orders' element={<Orders />} />
